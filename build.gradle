@@ -11,6 +11,10 @@ repositories {
     mavenCentral()
 }
 
+java {
+    modularity.inferModulePath = true
+}
+
 dependencies{
     
     testCompile 'junit:junit:4.13'
