@@ -26,17 +26,17 @@ import java.util.List;
  */
 public interface CRUDUseCase<T> extends AbstractUseCase {
 
-    public T create(T newObject) throws Exception;
+    public T create(T newObject) throws RuntimeException;
 
-    public T edit(T objectToUpdate) throws Exception;
+    public T edit(T objectToUpdate) throws RuntimeException;
 
-    public T destroy(T objectToDestroy) throws Exception;
+    public T destroy(T objectToDestroy) throws RuntimeException;
 
-    public T destroyById(Object keyId) throws Exception;
+    public T destroyById(Object keyId) throws RuntimeException;
 
-    public T findBy(Object keyId) throws Exception;
+    public T findBy(Object keyId) throws RuntimeException;
 
-    public List<T> findAll() throws Exception;
+    public List<T> findAll() throws RuntimeException;
 
     /**
      * By default return the size of the findAll() list.
@@ -44,7 +44,7 @@ public interface CRUDUseCase<T> extends AbstractUseCase {
      * @return findAll().size()
      * @throws Exception
      */
-    public default int count() throws Exception {
+    public default int count() throws RuntimeException {
         return findAll().size();
     }
 
