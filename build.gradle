@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.javamodularity.moduleplugin' version '1.7.0' apply true
 }
 
 group = 'com.root101.clean'
@@ -11,9 +12,6 @@ repositories {
     mavenCentral()
 }
 
-java {
-    modularity.inferModulePath = true
-}
 
 dependencies{
     
