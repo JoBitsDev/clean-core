@@ -47,8 +47,9 @@ public class DefaultCRUDUseCase<Domain> implements CRUDUseCase<Domain> {
     @Override
     public Domain create(Domain newObject) throws RuntimeException {
         validateDomain(newObject);
-
+        crudRepo.startTransaction();
         Domain d = crudRepo.create(newObject);
+        crudRepo.commitTransaction();
         firePropertyChange("create", null, d);
         return d;
     }
@@ -58,7 +59,9 @@ public class DefaultCRUDUseCase<Domain> implements CRUDUseCase<Domain> {
     public Domain edit(Domain objectToUpdate) throws RuntimeException {
         validateDomain(objectToUpdate);
 
+        crudRepo.startTransaction();
         Domain d = crudRepo.edit(objectToUpdate);
+        crudRepo.commitTransaction();
         firePropertyChange("edit", null, d);
         return d;
     }
@@ -66,7 +69,9 @@ public class DefaultCRUDUseCase<Domain> implements CRUDUseCase<Domain> {
     @Licenced
     @Override
     public Domain destroy(Domain objectToDestroy) throws RuntimeException {
+        crudRepo.startTransaction();
         Domain d = crudRepo.destroy(objectToDestroy);
+        crudRepo.commitTransaction();
         firePropertyChange("destroy", null, d);
         return d;
     }
@@ -74,7 +79,9 @@ public class DefaultCRUDUseCase<Domain> implements CRUDUseCase<Domain> {
     @Licenced
     @Override
     public Domain destroyById(Object keyId) throws RuntimeException {
+        crudRepo.startTransaction();
         Domain d = crudRepo.destroyById(keyId);
+        crudRepo.commitTransaction();
         firePropertyChange("destroyById", null, d);
         return d;
     }
