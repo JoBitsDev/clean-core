@@ -21,4 +21,5 @@ module com.root101clean.core {
     exports com.root101.clean.core.domain;
     exports com.root101.clean.core.domain.services;
     exports com.root101.clean.core.exceptions;
+    exports com.root101.clean.core.utils.validation;
 }
