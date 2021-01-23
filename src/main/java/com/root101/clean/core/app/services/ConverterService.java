@@ -14,21 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.root101.clean.core.app.usecase;
+package com.root101.clean.core.app.services;
+
+import java.util.List;
 
 /**
  *
  * @author Root101 (jhernandezb96@gmail.com, +53-5-426-8660)
  * @author JesusHdezWaterloo@Github
- * @param <T>
  */
-public interface CRUDLightweightUseCase<T> extends CRUDUseCase<T> {
+public interface ConverterService {
 
-    public void create_light(T newObject) throws RuntimeException;
+    public <T> T convert(Object objectToConvert, Class<? extends T> convertToClass) throws RuntimeException;
 
-    public void edit_light(T objectToUpdate) throws RuntimeException;
+    public <T> List<T> convert(List list, Class<? extends T> convertToClass) throws RuntimeException;
 
-    public void destroy_light(T objectToDestroy) throws RuntimeException;
-
-    public void destroyById_light(Object keyId) throws RuntimeException;
 }

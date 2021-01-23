@@ -18,6 +18,7 @@ package com.root101.clean.core.app.services;
 
 import com.root101.clean.core.exceptions.AlreadyRegisteredService;
 import com.root101.clean.core.exceptions.NoneRegisteredService;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,31 +26,35 @@ import java.util.Objects;
  * @author Root101 (jhernandezb96@gmail.com, +53-5-426-8660)
  * @author JesusHdezWaterloo@Github
  */
-public class LicenceHandler {
+public class ConverterHandler {
 
-    private static LicenceService licenceService;
+    private static ConverterService converterService;
 
-    private LicenceHandler() {
+    private ConverterHandler() {
     }
 
-    public static void registerLicenceService(LicenceService newService) {
-        if (licenceService != null) {
-            throw new AlreadyRegisteredService("Licence");
+    public static void registerConverterService(ConverterService newService) {
+        if (converterService != null) {
+            throw new AlreadyRegisteredService("Converter");
         }
-        Objects.requireNonNull(newService, "LicenceService can't be null");
+        Objects.requireNonNull(newService, "ConverterService can't be null");
 
-        licenceService = newService;
+        converterService = newService;
     }
 
-    public static LicenceService getLicenceService() {
-        if (licenceService == null) {
-            throw new NoneRegisteredService("Licence");
+    public static ConverterService getLicenceService() {
+        if (converterService == null) {
+            throw new NoneRegisteredService("Converter");
         }
-        return licenceService;
+        return converterService;
     }
 
-    public static boolean isActive() {
-        return getLicenceService().isActive();
+    public static <T> T convert(Object objectToConvert, Class<? extends T> convertToClass) throws RuntimeException {
+        return converterService.convert(objectToConvert, convertToClass);
+    }
+
+    public static <T> List<T> convert(List list, Class<? extends T> convertToClass) throws RuntimeException {
+        return converterService.convert(list, convertToClass);
     }
 
 }

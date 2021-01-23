@@ -46,8 +46,4 @@ public interface CRUDRepository<T> extends AbstractRepository {
     public void startTransaction();
 
     public void commitTransaction();
-
-    public void addPropertyChangeListener(java.beans.PropertyChangeListener listener);
-
-    public void removePropertyChangeListener(java.beans.PropertyChangeListener listener);
 }
